@@ -15,10 +15,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 //MONGOOSE<<<<<<<<<<<<<<
-mongoose.connect(process.env.MONGO_DB_URL);
+mongoose.connect("mongodb+srv://cheng-kang:Zhuckmongodb@todo-v2.l1jtr0q.mongodb.net/todolistDB");
 // "mongodb://localhost:27017/todolistDB"
 // mongodb://127.0.0.1:27017/todolistDB
 // mongodb+srv://cheng-kang:Zhuckmongodb@todo-v2.l1jtr0q.mongodb.net/todolistDB
+// process.env.MONGO_DB_URL
 
 const itemSchema = new mongoose.Schema({
   name: String,
