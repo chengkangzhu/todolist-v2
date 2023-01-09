@@ -15,10 +15,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 //MONGOOSE<<<<<<<<<<<<<<
-mongoose.connect("mongodb+srv://cheng-kang:Zhuckmongodb@todo-v2.l1jtr0q.mongodb.net/todolistDB");
+mongoose.connect(process.env.MONGO_DB_URL);
 // "mongodb://localhost:27017/todolistDB"
 // mongodb://127.0.0.1:27017/todolistDB
-// mongodb+srv://cheng-kang:Zhuckmongodb@todo-v2.l1jtr0q.mongodb.net/todolistDB
 // process.env.MONGO_DB_URL
 
 const itemSchema = new mongoose.Schema({
@@ -132,7 +131,6 @@ app.post("/", function (req, res) {
 app.post("/delete", function (req, res) {
   const checkedItemId = req.body.checkbox;
   const listName = req.body.listName;
-  console.log(req.body);
 
   if (listName === "Today") {
     //if is default route then remove the item from data
